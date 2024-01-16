@@ -17,6 +17,7 @@ class DepartmentView(APIView):
         }
         return Response(response_data,status.HTTP_200_OK)
     
+    #Create Department
     def post(self,request):
         response_data={
             "success": True,
@@ -40,8 +41,7 @@ class DepartmentView(APIView):
         return Response(response_data,status.HTTP_201_CREATED)
     
            
-        
-    
+    #Update Department
     def put(self,request,id):
         
         dept = Department.objects.filter(id=id).first()
@@ -61,10 +61,11 @@ class DepartmentView(APIView):
 
         return Response(response_data,status.HTTP_204_NO_CONTENT)
     
+    #Update Department
     def patch(self,request,id):
         return self.put(request,id)
     
-
+    #Delete Department
     def delete(self,request,id):
         dept = Department.objects.get(id=id)
         response_data={
@@ -84,7 +85,7 @@ class DepartmentView(APIView):
     
 class EmployeeView(APIView):
 
-    #get all the Employees
+    #Get all the Employees
     def get(self,request):
         dept=EmployeeSerializer(Employee.objects.all(),many=True).data
         
@@ -95,6 +96,7 @@ class EmployeeView(APIView):
         }
         return Response(response_data,status.HTTP_200_OK)
     
+    # Create Employee
     def post(self,request):
         response_data={
             "success": True,
@@ -129,6 +131,7 @@ class EmployeeView(APIView):
 
         return Response(response_data,status.HTTP_201_CREATED)
 
+    #Update Employee
     def put(self,request,id):
         
         empl = Employee.objects.filter(id=id).first()
@@ -148,10 +151,11 @@ class EmployeeView(APIView):
 
         return Response(response_data,status.HTTP_204_NO_CONTENT)
     
+    #Update Employee
     def patch(self,request,id):
         return self.put(request,id)
     
-
+    #Delete Employee
     def delete(self,request,id):
         print(id)
         empl = Employee.objects.get(id=id)
