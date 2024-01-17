@@ -5,7 +5,7 @@ import uuid
 
 class Department(models.Model):
     name=models.CharField(max_length=50, unique=True)
-    id=models.UUIDField(primary_key=True,default=uuid.uuid4, editable=False)
+    id=models.AutoField(primary_key=True)
 
     description=models.TextField(blank=True)
 
@@ -16,7 +16,7 @@ class Department(models.Model):
 class Employee(models.Model):
     first_name=models.CharField(max_length=50)
     last_name=models.CharField(max_length=50)
-    id=models.UUIDField(primary_key=True,default=uuid.uuid4, editable=False)
+    id=models.AutoField(primary_key=True)
     email=models.EmailField(unique=True)
     role=models.CharField(max_length=20)
     department_id=models.UUIDField(blank=True,null=True)
