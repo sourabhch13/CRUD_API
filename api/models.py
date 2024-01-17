@@ -12,15 +12,14 @@ class Department(models.Model):
     def __str__(self):
         return self.name
     
-
 class Employee(models.Model):
     first_name=models.CharField(max_length=50)
     last_name=models.CharField(max_length=50)
     id=models.AutoField(primary_key=True)
     email=models.EmailField(unique=True)
     role=models.CharField(max_length=20)
-    department_id=models.UUIDField(blank=True,null=True)
-    manager_id=models.UUIDField(blank=True,null=True)
+    department_id=models.SmallIntegerField(blank=True,null=True)
+    manager_id=models.SmallIntegerField(blank=True,null=True)
 
 
     def __str__(self):
